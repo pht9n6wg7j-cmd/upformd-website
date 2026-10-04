@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt — UPFORMD</title>
+<meta name="description" content="Kontakt zu UPFORMD.">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+
+<header class="top">
+  <a href="index.html">UPFORMD</a>
+  <a class="back" href="index.html">&larr; Zurück</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">( 002 )</p>
+  <h1>Kontakt</h1>
+
+  <p class="lead">Fragen, Kooperationen oder einfach Interesse? Schreib uns.</p>
+
+  <!-- FORMSPREE: "DEINE_FORM_ID" durch die ID aus deinem Formspree-Konto ersetzen -->
+  <form id="contact" action="https://formspree.io/f/DEINE_FORM_ID" method="POST" style="margin-top:40px">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" autocomplete="name" required>
+    </div>
+    <div>
+      <label for="email">E-Mail</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div>
+      <label for="message">Nachricht</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+
+    <!-- Spam-Schutz (für Menschen unsichtbar) -->
+    <div class="hp" aria-hidden="true">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+    </div>
+    <input type="hidden" name="_subject" value="Neue Anfrage über upformd.de">
+
+    <p class="consent">Mit dem Absenden werden deine Angaben zur Bearbeitung der Anfrage verarbeitet. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+
+    <button type="submit">
+      Absenden
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg>
+    </button>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer class="bottom">
+  <span>&copy; 2026 UPFORMD</span>
+  <nav>
+    <a href="kontakt.html" aria-current="page">Kontakt</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </nav>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('contact');
+    var status = document.getElementById('status');
+    var btn = form.querySelector('button');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      btn.disabled = true;
+      status.textContent = 'Wird gesendet …';
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res){
+        if (res.ok) {
+          form.reset();
+          status.textContent = 'Danke! Deine Nachricht ist angekommen.';
+        } else {
+          status.textContent = 'Das hat leider nicht geklappt. Bitte schreib direkt an hello@upformd.de.';
+        }
+      }).catch(function(){
+        status.textContent = 'Keine Verbindung. Bitte versuch es später erneut.';
+      }).finally(function(){
+        btn.disabled = false;
+      });
+    });
+  })();
+</script>
+</body>
+</html>
