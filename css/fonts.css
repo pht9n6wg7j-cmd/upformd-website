@@ -1,0 +1,5 @@
+/* Lokal gehostete Schriften (keine Verbindung zu Google) — SIL Open Font License 1.1 */
+@font-face{font-family:'Archivo';font-style:normal;font-weight:300;font-display:swap;src:url('../fonts/archivo-latin-300-normal.woff2') format('woff2')}
+@font-face{font-family:'Archivo';font-style:normal;font-weight:900;font-display:swap;src:url('../fonts/archivo-latin-900-normal.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2')}

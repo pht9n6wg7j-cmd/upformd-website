@@ -1,0 +1,82 @@
+/* Gemeinsames Layout für Unterseiten (Impressum, Datenschutz, Kontakt) */
+:root{
+  --bg:#ffffff;
+  --ink:#0a0a0a;
+  --mute:#8a8a8a;
+  --line:#e6e6e6;
+  --pad:clamp(16px,3vw,40px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'IBM Plex Mono',ui-monospace,monospace;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;flex-direction:column;
+}
+::selection{background:var(--ink);color:var(--bg)}
+a{color:inherit}
+
+.top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:var(--pad);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  border-bottom:1px solid var(--ink);
+}
+.top a{text-decoration:none;font-weight:500}
+.top .back{display:inline-flex;gap:8px;align-items:center;color:var(--mute);font-weight:400}
+.top .back:hover{color:var(--ink)}
+
+.wrap{
+  flex:1;width:100%;max-width:820px;
+  padding:clamp(40px,8vh,96px) var(--pad) 80px;
+}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+h1{
+  font-family:'Archivo',sans-serif;font-weight:900;
+  font-size:clamp(40px,8vw,88px);line-height:.9;letter-spacing:-.04em;
+  text-transform:uppercase;margin-bottom:clamp(32px,6vh,64px);
+}
+h2{
+  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  padding-top:14px;border-top:1px solid var(--line);margin:40px 0 14px;
+}
+p,li,address{font-size:14px;line-height:1.7;font-style:normal}
+p + p{margin-top:12px}
+ul{padding-left:18px;margin-top:8px}
+li{margin-top:4px}
+.lead{
+  font-family:'Archivo',sans-serif;font-weight:300;
+  font-size:clamp(18px,2.2vw,24px);line-height:1.35;letter-spacing:-.01em;
+}
+.note{color:var(--mute);font-size:12px;margin-top:48px}
+
+/* Formular */
+form{display:grid;gap:22px;margin-top:8px}
+label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+input,textarea{
+  width:100%;font:inherit;font-size:15px;color:var(--ink);background:transparent;
+  border:0;border-bottom:1px solid var(--ink);border-radius:0;
+  padding:10px 0;outline:none;transition:border-color .2s;
+}
+input:focus,textarea:focus{border-bottom-width:2px;padding-bottom:9px}
+textarea{min-height:140px;resize:vertical}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.consent{font-size:12px;line-height:1.6;color:var(--mute)}
+button{
+  justify-self:start;font:inherit;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px;cursor:pointer;
+  padding:14px 18px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);
+  transition:background .25s,color .25s;
+}
+button:hover{background:var(--bg);color:var(--ink)}
+button:disabled{opacity:.5;cursor:wait}
+.status{font-size:13px;min-height:1.4em}
+
+.bottom{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:var(--pad);border-top:1px solid var(--line);
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);
+}
+.bottom nav{display:flex;gap:18px;flex-wrap:wrap}
+.bottom a{text-decoration:none}
+.bottom a:hover,.bottom a[aria-current]{color:var(--ink)}
